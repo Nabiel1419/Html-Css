@@ -1,0 +1,35 @@
+#parent
+{
+border:1px solid red;
+/*width:100mm;
+
+width:500px;
+width:500pt;
+width:500pc;
+
+width: 800px;
+
+height:50vh;
+width:50vw;
+
+font-size:30px;
+*/
+font-size: 10vw;
+
+}
+#child
+{
+border: 1px solid blue;
+/*
+width:50%
+
+font-size:2em;
+*/
+font-size:2rem;
+
+}
+html{
+    font-size:10px;
+    
+
+}

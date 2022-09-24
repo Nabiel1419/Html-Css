@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+    <head><style>
+        #info1
+        {
+    background-color: indigo;
+        }
+        #i2
+        {
+background-color:rgba(255,0,23,20);
+border-style: dashed;
+        }
+    </style>
+
+    </head>
+
+<body bgcolor="pink">
+    <form>
+    <fieldset id="info1">
+        <legend>BIO</legend>
+   <input type="text"name="fn"placeholder="Enter your  first_name "autofocus required />
+<input type="text"name="ln"placeholder="Enter your last_name"autofocus required/>
+<input type="text"name="ffn"placeholder="Enter your fathers_name"autofocus required/>
+<label for="dd">Date of birth</label>
+<input type="date"name="dd"required />
+
+
+    </fieldset>
+    <fieldset>
+        <legend>ADDRESS</legend>
+        
+<input type="text"name="a2"placeholder="District"autofocus/>
+<input type="text"name="a3"placeholder=" Village"autofocus required/>
+<input type="number" name="a4" placeholder="Pincode"/>
+
+
+
+    </fieldset>
+    <fieldset id="i2">
+        <legend>GENDER</legend>
+        
+<input type="radio" name="g" checked/>Male
+<input type="radio" name="g"/>Female
+<input type="radio" name="g"/>Other
+
+
+
+    </fieldset>
+    <fieldset>
+        <legend>SUBJECTS</legend>
+        
+<input type="checkbox" name="s" checked/>Maths
+<input type="checkbox" name="s"/>Physics
+<input type="checkbox" name="s"/>Biology
+<input type="checkbox"name="s"/>chemistry
+<input type="checkbox"name="s"/>zoology
+
+
+
+    </fieldset>
+    <fieldset>
+
+        <legend>CONTACT INFO</legend>
+        <input type="number" name="no" placeholder="Enter Mobile Number"/>
+        <input type="email" name="no2" placeholder="Enter Email"/>
+        
+
+
+    </fieldset>
+    <fieldset>
+        <legend> Enter ur Query Here</legend>
+        <textarea rows="20"cols="40" placeholder="enter text">
+
+        </textarea>
+    </fieldset>
+    <fieldset>
+        <input type="file" id="sd" multiple/>
+    <select>
+        <option>adhar card or election card</option>
+        <option>10th marks sheet </option>
+        <option> bank passbook</option>
+        <option>Dob certificate</option>
+
+
+    </select>
+      
+    <input type="submit" value="SUBMIT"/>
+
+    <input type="reset" value="RESET"/>
+
+   
+    </fieldset>
+   
+
+    </form>
+</body>
+</html>

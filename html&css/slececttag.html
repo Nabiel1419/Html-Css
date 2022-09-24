@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<body>
+<form>
+<select size="2" <!--multiple to selected multiple options--> >
+<optgroup label="computer">
+<option value="1">dbms  </option>
+<option value="3">networking</option>
+<option  value="" selected>c++</option>
+</optgroup>
+<optgroup label="mathametics">
+<option  value="4" >math</option>
+<option  value="5" >discrete math</option>
+<option  value="6" >numerical math</option>
+</optgroup>
+</form>
+
+</select>
+
+<br>
+<br>
+<!-- radio buttons-->
+<form>
+<input type="radio" value="1" name="gender">male
+<input type="radio" value="2" name="gender" checked>female
+
+<input type="radio" value="3" name="emp">manager
+<input type="radio" value="3" name="emp">employe
+<input type="radio" value="3" name="emp" checked>developer
+
+
+
+<!-- checkbox-->
+</form>
+<form method="post/get" action="">
+
+<input type="checkbox"name="sbjects">c language
+<input type="checkbox"name="sbjects">java
+<input type="checkbox"name="sbjects">javascript
+<input type="checkbox"name="sbjects">html
+
+
+<!-- datalist-->
+<form>
+search<input type="text" list="search"<!--binds list with input tag-->
+<datalist id="search">
+<option value="apple">
+<option value="mango">
+<option value="orange">
+
+</datalist>
+
+<input type="submit" value="search">
+</form>
+</form>
+<form>
+
+<div>
+<label for="fname">First name</label>
+<input  id="fname"type="text" name="first_name">
+
+</div>
+<div>
+<input type="submit">
+
+</div>
+<!-- fieldset tag legend tag-->
+<fieldset>
+<legend>BIO</legend>
+<label for="fname1">First name</label>
+<input  id="fname1"type="text" name="first_name">
+<label for="lname">Last name</label>
+<input  id="lname"type="text" name="last_name">
+</fieldset>
+
+
+<fieldset>
+<legend>
+ADDRESS
+</legend>
+<label for="addr">street</label>
+<input  id="addr"type="text" name="landmark">
+<label for="vname">village</label>
+<input  id="vname"type="text" name="village">
+</fieldset>
+
+</form>
+
+</body>
+
+</html>

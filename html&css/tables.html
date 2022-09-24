@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #null 
+
+            {
+                background-color: red;
+                border:2px, solid,red;
+            }
+            #none
+            {
+                background-color: blue;
+                border:3px,solid,green;
+            }
+
+        </style>
+    </head>
+    <body >
+        <div>
+            <p id="time"></p>
+        </div>
+        <div id="null"> <p  id="i2"> thid is a param tag meta tag span tag</p>
+            </div>
+            <span id="none"> jksdjkjhfidushfkjdsakhfkhisadkafhkjsdoahnfksan</span>
+ <p>this is hello world .com  ghfhfgjfdjhgkufktuygugyfygjh uygyugiufu uyuguyhgiug yuuyiguygilgufyuiu uyguy </p>
+ </span>
+ <a href="mailto:aryannabiel@gmail.com">please click me</a>
+ <a href="tel:9622765774">please click me</a>
+ <button onmouseover="change()">click</button>
+    </body>
+   <script>/*
+        function change()
+        {
+            document.getElementById("i2").innerHTML="hello user"
+         //.innerHTML="welcome Javascript";
+            document.getElementsByTagName('body').style.backgroundcolor="green";
+            
+        }
+    
+          const fruits=['lemon','orange','yellow','pink']
+          //   document.write(fruits[3]);
+        fruits.push("pear");//push elements 
+        fruits.pop();//pops out last element
+      //  document.write(fruits[4]);
+          let x=fruits.shift();//pop element at the begning of an array
+          document.write(x);
+          fruits.unshift("and");//adds element at the begining of an array
+          document.write(fruits[0]);
+          fruits.splice(2,0,"junaid");//used to add new element to array at specified location
+          document.write(fruits[2]);
+          const newarr=fruits.slice(1);//creates new array
+       document.write(newarr[0]);
+const newarray=new Array("abid","junaid","aamir");
+document.write(newarray[0]);
+
+let string="Hello java script we are new Here please Welcome us ";
+document.write(string.length);
+//string slicing 
+let newstr=string.slice(0,20);//(start end)
+let newstr=string.substr(0,20);//substr(start,length)
+let str2=string.substring(0,30);//(start,end)
+let txt="junaid ah beig";
+txt.replace("bieg","kamal");
+document.write(txt);
+d=new Date();
+let x=d.getMonth();
+var time =new Date();
+console.log(time.toLocaleString("en-US",(Hour:"numeric",Hour12:true)));
+switch(x)
+{
+    case 0:
+        doument.write("sunday");
+        break;
+            case 11:
+                document.write("november");
+                break;
+                case 6:document.write("saturday");
+                break;
+                default:
+                    document.write("wrong date");
+
+}
+let t=d.getHours();
+console.log(t);
+ document.write(Math.abs(-3));//Math.floor(3.5),ceil(3.5),trunc(3.4),round(5.5)*/
+ setInterval(clock_time,400)
+ function clock_time()
+ {
+  var d=new Date();
+ let h=d.getHours();
+ let m=d.getMinutes();
+ let s=d.getSeconds();
+ if(h>12)
+ {
+     h=h-12;
+ }
+ if(h==0)
+ {
+     h=12;
+ }
+ if(h<10)
+ {
+     h="0"+h;
+ }
+ if(m<10)
+ {
+     m="0"+m;
+ }
+ if(s<10)
+ {
+     s="0"+s;
+ }
+ document.getElementById('time').innerHTML=h+":"+m+":"+s;
+ document.getElementById('time').style.color="red";
+}
+
+    </script>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+#bg
+{
+    background-color:red;
+    background-image:url('images.jpeg'),url('images.jpeg');
+    background-repeat: no-repeat;
+    background-position: left top, right bottom;
+}
+
+    </style>
+</head>
+<body id="bg">
+    <p>
+        A) more efficient use of organization’s IP address space
+        Æ Subnets may significantly vary in relative size (computer 
+        room = 200 hosts, secretary = 4 hosts…) 
+        Æconsider a 4 host network with mask 255.255.255.0: wastes 
+        250 IP addresses!
+        Ö B) allows route aggregation, thus reducing routing 
+        information needed
+        Î Needs further support by routing protocol 
+        Öe.g. RIP1 doesn’t support VLSM
+        G.Bianchi, G.Neglia, V.Mancuso
+        A typical problem A typical problem
+        AC B pc-net 100 host ws-net 20 host x-net-1 20 host x-net-2 10 host Link-1 Link-2 Link-3
+        100+20+20+10 = 150 total hosts: 1 class C enough (including growth projections). 
+        7 subnets (4 LANS + 3 point to point links): 3 bit subnet ID (= up to 8 subnets)
+        BUT then max 30 host per subnet: no way to accommodate pc-net!!
+        G.Bianchi, G.Neglia, V.Mancuso
+        Solution without VLSM Solution without VLSM
+        need 2 class C address! need 2 class C address!
+        AC B pc-net 192.168.1.0/25 (0-127, 126 host) ws-net 192.168.1.128/25 (128-255, 126 host) x-net-1 192.168.2.0/27 (0-31, 30 host) x-net-2 192.168.2.32/27 (32-63, 30 host) 192.168.2.64/27 Link-1 Link-2 192.168.2.96/27 Link-3 192.168.2.128/27
+        192.168.1.0
+        mask 255.255.255.128
+        192.168.2.0
+        mask 255.255.255.224
+        G.Bianchi, G.Neglia, V.Mancuso
+        Using Using VLSM VLSM
+        Ö Recursive address space aggregation!
+        Ö First, divide network in subnets
+        Ö then, SOME subnets further 
+        divided into sub-subnets
+        Ö then, some sub-subnets further 
+        divided… etc
+        (pc-net)
+        192.168.1.128/27
+        (up to 30 hosts)
+        192.168.1.160/27
+        (up to 30 hosts)
+        192.168.1.192/27
+        (up to 30 hosts)
+        192.168.1.224/27
+        (up to 30 hosts)
+        192.168.1.0/24
+        (up to 254 hosts)
+        192.168.1.0/25
+        (up to 126 hosts)
+        192.168.1.128/25
+        (up to 126 hosts)
+        (ws-net)
+        (x1-net)
+        (available)
+        192.168.1.192/28
+        (up to 14 hosts)
+        192.168.1.208/28
+        (up to 14 hosts)
+        (x2-net)
+        192.168.1.208/30 (ptp)
+        192.168.1.212/30 (ptp)
+        192.168.1.216/30 (ptp)
+        192.168.1.220/30 (avail)
+        G.Bianchi, G.Neglia, V.Mancuso
+        Final solution with VLSM Final solution with VLSM
+        1 C address is enough 1 C address is enough
+        AC B pc-net 192.168.1.0/25 (0-127, 126 host) 255.255.255.128 ws-net 192.168.1.128/27 (128-159, 30 host) 255.255.255.224 x-net-1 192.168.1.160/27 (160-191, 30 host) 255.255.255.224 x-net-2 192.168.1.192/28 (192-207, 14 host) 255.255.255.240 192.168.1.208/30 Link-1 Link-2 192.168.1.212/30 Link-3 192.168.1.216/30
+        192.168.1.0
+        Point2point links:
+        255.255.255.252
+        G.Bianchi, G.Neglia, V.Mancuso
+        address pie for our sol. address pie for our sol.
+        PC-net
+        0-127
+        WS-net
+        128-159
+        x-net-1
+        160-191
+        x-net-2
+        192-207
+        Link1 208-211
+        Link2 212-215
+        Link3 216-219
+        Available for
+        further subnets
+        G.Bianchi, G.Neglia, V.Mancuso
+        Requirements for VLSM support (1) Requirements for VLSM support (1)
+        Î Routing tables: need to specify extended 
+        network prefix information (subnet mask) 
+        per each entry
+        Î Routing protocol: must carry extended 
+        network prefix information with each route 
+        advertisement
+        New route advertise + mask (or prefix len) A) more efficient use of organization’s IP address space
+        Æ Subnets may significantly vary in relative size (computer 
+        room = 200 hosts, secretary = 4 hosts…) 
+        Æconsider a 4 host network with mask 255.255.255.0: wastes 
+        250 IP addresses!
+        Ö B) allows route aggregation, thus reducing routing 
+        information needed
+        Î Needs further support by routing protocol 
+        Öe.g. RIP1 doesn’t support VLSM
+        G.Bianchi, G.Neglia, V.Mancuso
+        A typical problem A typical problem
+        AC B pc-net 100 host ws-net 20 host x-net-1 20 host x-net-2 10 host Link-1 Link-2 Link-3
+        100+20+20+10 = 150 total hosts: 1 class C enough (including growth projections). 
+        7 subnets (4 LANS + 3 point to point links): 3 bit subnet ID (= up to 8 subnets)
+        BUT then max 30 host per subnet: no way to accommodate pc-net!!
+        G.Bianchi, G.Neglia, V.Mancuso
+        Solution without VLSM Solution without VLSM
+        need 2 class C address! need 2 class C address!
+        AC B pc-net 192.168.1.0/25 (0-127, 126 host) ws-net 192.168.1.128/25 (128-255, 126 host) x-net-1 192.168.2.0/27 (0-31, 30 host) x-net-2 192.168.2.32/27 (32-63, 30 host) 192.168.2.64/27 Link-1 Link-2 192.168.2.96/27 Link-3 192.168.2.128/27
+        192.168.1.0
+        mask 255.255.255.128
+        192.168.2.0
+        mask 255.255.255.224
+        G.Bianchi, G.Neglia, V.Mancuso
+        Using Using VLSM VLSM
+        Ö Recursive address space aggregation!
+        Ö First, divide network in subnets
+        Ö then, SOME subnets further 
+        divided into sub-subnets
+        Ö then, some sub-subnets further 
+        divided… etc
+        (pc-net)
+        192.168.1.128/27
+        (up to 30 hosts)
+        192.168.1.160/27
+        (up to 30 hosts)
+        192.168.1.192/27
+        (up to 30 hosts)
+        192.168.1.224/27
+        (up to 30 hosts)
+        192.168.1.0/24
+        (up to 254 hosts)
+        192.168.1.0/25
+        (up to 126 hosts)
+        192.168.1.128/25
+        (up to 126 hosts)
+        (ws-net)
+        (x1-net)
+        (available)
+        192.168.1.192/28
+        (up to 14 hosts)
+        192.168.1.208/28
+        (up to 14 hosts)
+        (x2-net)
+        192.168.1.208/30 (ptp)
+        192.168.1.212/30 (ptp)
+        192.168.1.216/30 (ptp)
+        192.168.1.220/30 (avail)
+        G.Bianchi, G.Neglia, V.Mancuso
+        Final solution with VLSM Final solution with VLSM
+        1 C address is enough 1 C address is enough
+        AC B pc-net 192.168.1.0/25 (0-127, 126 host) 255.255.255.128 ws-net 192.168.1.128/27 (128-159, 30 host) 255.255.255.224 x-net-1 192.168.1.160/27 (160-191, 30 host) 255.255.255.224 x-net-2 192.168.1.192/28 (192-207, 14 host) 255.255.255.240 192.168.1.208/30 Link-1 Link-2 192.168.1.212/30 Link-3 192.168.1.216/30
+        192.168.1.0
+        Point2point links:
+        255.255.255.252
+        G.Bianchi, G.Neglia, V.Mancuso
+        address pie for our sol. address pie for our sol.
+        PC-net
+        0-127
+        WS-net
+        128-159
+        x-net-1
+        160-191
+        x-net-2
+        192-207
+        Link1 208-211
+        Link2 212-215
+        Link3 216-219
+        Available for
+        further subnets
+        G.Bianchi, G.Neglia, V.Mancuso
+        Requirements for VLSM support (1) Requirements for VLSM support (1)
+        Î Routing tables: need to specify extended 
+        network prefix information (subnet mask) 
+        per each entry
+        Î Routing protocol: must carry extended 
+        network prefix information with each route 
+        advertisement
+        New route advertise + mask (or prefix len) A) more efficient use of organization’s IP address space
+        Æ Subnets may significantly vary in relative size (computer 
+        room = 200 hosts, secretary = 4 hosts…) 
+        Æconsider a 4 host network with mask 255.255.255.0: wastes 
+        250 IP addresses!
+        Ö B) allows route aggregation, thus reducing routing 
+        information needed
+        Î Needs further support by routing protocol 
+        Öe.g. RIP1 doesn’t support VLSM
+        G.Bianchi, G.Neglia, V.Mancuso
+        A typical problem A typical problem
+        AC B pc-net 100 host ws-net 20 host x-net-1 20 host x-net-2 10 host Link-1 Link-2 Link-3
+        100+20+20+10 = 150 total hosts: 1 class C enough (including growth projections). 
+        7 subnets (4 LANS + 3 point to point links): 3 bit subnet ID (= up to 8 subnets)
+        BUT then max 30 host per subnet: no way to accommodate pc-net!!
+        G.Bianchi, G.Neglia, V.Mancuso
+        Solution without VLSM Solution without VLSM
+        need 2 class C address! need 2 class C address!
+        AC B pc-net 192.168.1.0/25 (0-127, 126 host) ws-net 192.168.1.128/25 (128-255, 126 host) x-net-1 192.168.2.0/27 (0-31, 30 host) x-net-2 192.168.2.32/27 (32-63, 30 host) 192.168.2.64/27 Link-1 Link-2 192.168.2.96/27 Link-3 192.168.2.128/27
+        192.168.1.0
+        mask 255.255.255.128
+        192.168.2.0
+        mask 255.255.255.224
+        G.Bianchi, G.Neglia, V.Mancuso
+        Using Using VLSM VLSM
+        Ö Recursive address space aggregation!
+        Ö First, divide network in subnets
+        Ö then, SOME subnets further 
+        divided into sub-subnets
+        Ö then, some sub-subnets further 
+        divided… etc
+        (pc-net)
+        192.168.1.128/27
+        (up to 30 hosts)
+        192.168.1.160/27
+        (up to 30 hosts)
+        192.168.1.192/27
+        (up to 30 hosts)
+        192.168.1.224/27
+        (up to 30 hosts)
+        192.168.1.0/24
+        (up to 254 hosts)
+        192.168.1.0/25
+        (up to 126 hosts)
+        192.168.1.128/25
+        (up to 126 hosts)
+        (ws-net)
+        (x1-net)
+        (available)
+        192.168.1.192/28
+        (up to 14 hosts)
+        192.168.1.208/28
+        (up to 14 hosts)
+        (x2-net)
+        192.168.1.208/30 (ptp)
+        192.168.1.212/30 (ptp)
+        192.168.1.216/30 (ptp)
+        192.168.1.220/30 (avail)
+        G.Bianchi, G.Neglia, V.Mancuso
+        Final solution with VLSM Final solution with VLSM
+        1 C address is enough 1 C address is enough
+        AC B pc-net 192.168.1.0/25 (0-127, 126 host) 255.255.255.128 ws-net 192.168.1.128/27 (128-159, 30 host) 255.255.255.224 x-net-1 192.168.1.160/27 (160-191, 30 host) 255.255.255.224 x-net-2 192.168.1.192/28 (192-207, 14 host) 255.255.255.240 192.168.1.208/30 Link-1 Link-2 192.168.1.212/30 Link-3 192.168.1.216/30
+        192.168.1.0
+        Point2point links:
+        255.255.255.252
+        G.Bianchi, G.Neglia, V.Mancuso
+        address pie for our sol. address pie for our sol.
+        PC-net
+        0-127
+        WS-net
+        128-159
+        x-net-1
+        160-191
+        x-net-2
+        192-207
+        Link1 208-211
+        Link2 212-215
+        Link3 216-219
+        Available for
+        further subnets
+        G.Bianchi, G.Neglia, V.Mancuso
+        Requirements for VLSM support (1) Requirements for VLSM support (1)
+        Î Routing tables: need to specify extended 
+        network prefix information (subnet mask) 
+        per each entry
+        Î Routing protocol: must carry extended 
+        network prefix information with each route 
+        advertisement
+        New route advertise + mask (or prefix len)
+    </p>
+
+</body>
+</html>
